@@ -614,12 +614,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518190437}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1894575147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
@@ -829,6 +829,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1474939719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1474939720}
+  - component: {fileID: 1474939721}
+  m_Layer: 0
+  m_Name: Exploser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1474939720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474939719}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1894575147}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1474939721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474939719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57246121eb8b44f4d95fee23d3d50f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionForce: 1000
+  _upwardsModifier: 0.5
+  _torqueForce: 50
+  _explosionRadius: 3
 --- !u!1 &1596705266
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +887,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1596705270}
   - component: {fileID: 1596705272}
-  - component: {fileID: 1596705273}
   - component: {fileID: 1596705269}
   - component: {fileID: 1596705268}
   - component: {fileID: 1596705267}
@@ -980,7 +1027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selfRenderer: {fileID: 1596705268}
-  _selExploser: {fileID: 1596705273}
+  _selExploser: {fileID: 1474939721}
   _spawner: {fileID: 518190438}
   _materials:
   - {fileID: 2100000, guid: de5a23ff028f37746a588c17a83c5715, type: 2}
@@ -989,22 +1036,39 @@ MonoBehaviour:
   _minMaxSplit: {x: 2, y: 6}
   _startChance: 100
   _chance: 100
---- !u!114 &1596705273
-MonoBehaviour:
+--- !u!1 &1894575146
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596705266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57246121eb8b44f4d95fee23d3d50f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _explosionForce: 1000
-  _upwardsModifier: 0.5
-  _torqueForce: 50
-  _explosionRadius: 3
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894575147}
+  m_Layer: 0
+  m_Name: Systems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1894575147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894575146}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 518190439}
+  - {fileID: 1474939720}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2083269308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,4 +1125,4 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 412243817}
   - {fileID: 1596705270}
-  - {fileID: 518190439}
+  - {fileID: 1894575147}
