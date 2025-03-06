@@ -14,6 +14,7 @@ public class AppleCut : MonoBehaviour, IClickable
 	[SerializeField] private float explosionForce = 1000f;
 	[SerializeField] private float explosionRadius = 5f;
 	[SerializeField] private float upwardsModifier = 0.5f;
+	[SerializeField] private float torqueForce = 50f;
 
 	private float Chance
 	{
@@ -85,6 +86,9 @@ public class AppleCut : MonoBehaviour, IClickable
 			if (hitRigidbody != null)
 			{
 				hitRigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardsModifier);
+
+				Vector3 randomTorque = Random.insideUnitSphere * torqueForce;
+				hitRigidbody.AddTorque(randomTorque, ForceMode.Impulse);
 			}
 		}
 
