@@ -7,16 +7,12 @@ public class Exploser : MonoBehaviour
 	[SerializeField] private float _torqueForce = 50f;
 	[SerializeField] private float _explosionRadius = 3f;
 
-	public void Explose(GameObject recline)
+	public void Explose(Rigidbody reclineRigidbody, Vector3 central)
 	{
-		Rigidbody rigidbody = recline.GetComponent<Rigidbody>();
+		Vector3 direction = (central - reclineRigidbody.transform.position).normalized;
+		reclineRigidbody.AddExplosionForce(_explosionForce, central, _explosionRadius, _upwardsModifier);
 
-		if (rigidbody != null)
-		{
-			rigidbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, _upwardsModifier);
-
-			Vector3 randomTorque = Random.insideUnitSphere * _torqueForce;
-			rigidbody.AddTorque(randomTorque, ForceMode.Impulse);
-		}
+		Vector3 torque = Vector3.Cross(direction, Vector3.up) * _torqueForce;
+		reclineRigidbody.AddTorque(torque, ForceMode.Impulse);
 	}
 }

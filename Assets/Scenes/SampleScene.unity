@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3750e158e3df4448bd0f952e91789f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRange: 2
+  _spawnRange: 3
 --- !u!4 &518190439
 Transform:
   m_ObjectHideFlags: 0
@@ -621,6 +621,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1894575147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &637130718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 637130719}
+  - component: {fileID: 637130720}
+  m_Layer: 0
+  m_Name: Cutter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &637130719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637130718}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1894575147}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &637130720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637130718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed680cf15f6be54cb3be633c339c155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exploser: {fileID: 1474939721}
+  _spawner: {fileID: 518190438}
+  _minMaxSplit: {x: 2, y: 6}
+  _startChance: 100
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,10 +921,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57246121eb8b44f4d95fee23d3d50f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionForce: 1000
+  _explosionForce: 500
   _upwardsModifier: 0.5
   _torqueForce: 50
-  _explosionRadius: 3
+  _explosionRadius: 10
 --- !u!1 &1596705266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,19 +1071,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1596705266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ed680cf15f6be54cb3be633c339c155, type: 3}
+  m_Script: {fileID: 11500000, guid: 0aa095e04f0353447acac57daccc6014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selfRenderer: {fileID: 1596705268}
-  _selExploser: {fileID: 1474939721}
-  _spawner: {fileID: 518190438}
   _materials:
   - {fileID: 2100000, guid: de5a23ff028f37746a588c17a83c5715, type: 2}
   - {fileID: 2100000, guid: 52e495b9104c80b4bada23fe455cd2cc, type: 2}
   - {fileID: 2100000, guid: 128fe90a9cb2e1c47abc138540ae663d, type: 2}
-  _minMaxSplit: {x: 2, y: 6}
-  _startChance: 100
-  _chance: 100
+  _chance: 0
 --- !u!1 &1894575146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1111,7 @@ Transform:
   m_Children:
   - {fileID: 518190439}
   - {fileID: 1474939720}
+  - {fileID: 637130719}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2083269308
