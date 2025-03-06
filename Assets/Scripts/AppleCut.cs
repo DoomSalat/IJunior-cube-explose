@@ -11,6 +11,9 @@ public class AppleCut : MonoBehaviour, IClickable
 	[SerializeField][Range(0, 100)] private float _startChance = 100;
 	[SerializeField][Range(0, 100)] private float _chance;
 
+	private float _reduceScale = 2;
+	private float _reduceChance = 2;
+
 	private float Chance
 	{
 		get
@@ -33,7 +36,7 @@ public class AppleCut : MonoBehaviour, IClickable
 		Destroy(gameObject);
 	}
 
-	public void Create(float chance, float scale)
+	public void Construct(float chance, float scale)
 	{
 		Chance = chance;
 		transform.localScale = new Vector3(scale, scale, scale);
@@ -50,9 +53,9 @@ public class AppleCut : MonoBehaviour, IClickable
 
 		for (int i = 0; i < apples.Length; i++)
 		{
-			float nextChance = Chance / 2;
-			float nextScale = transform.localScale.x / 2;
-			apples[i].Create(nextChance, nextScale);
+			float nextChance = Chance / _reduceChance;
+			float nextScale = transform.localScale.x / _reduceScale;
+			apples[i].Construct(nextChance, nextScale);
 
 			_selExploser.Explose(apples[i].gameObject);
 		}
