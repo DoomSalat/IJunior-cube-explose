@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Explosed cubes 3D.sln"
+	"dotnet.defaultSolution": "Explosed cubes 3D.sln",
+	"git.ignoreLimitWarning": true
 }

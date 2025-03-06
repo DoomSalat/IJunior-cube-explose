@@ -6,8 +6,8 @@ public class AppleCut : MonoBehaviour, IClickable
 
 	[SerializeField] private Material[] _materials;
 	[SerializeField] private Vector2 _minMaxSplit = new Vector2(2, 6);
-	[SerializeField][Range(0, 100)] private float _startChance = 100;
 	[SerializeField][Min(0)] private float spawnRange = 5f;
+	[SerializeField][Range(0, 100)] private float _startChance = 100;
 	[SerializeField][Range(0, 100)] private float _chance;
 
 	[Header("Explose")]
