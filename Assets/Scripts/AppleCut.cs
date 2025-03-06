@@ -4,7 +4,7 @@ public class AppleCut : MonoBehaviour, IClickable
 {
 	[SerializeField] private Renderer _selfRenderer;
 	[SerializeField] private Exploser _selExploser;
-	[SerializeField] private SpawnerApple _spawner;
+	[SerializeField] private Spawner _spawner;
 
 	[SerializeField] private Material[] _materials;
 	[SerializeField] private Vector2 _minMaxSplit = new Vector2(2, 6);
@@ -45,7 +45,8 @@ public class AppleCut : MonoBehaviour, IClickable
 	private void Split()
 	{
 		int splitsCount = (int)Random.Range(_minMaxSplit.x, _minMaxSplit.y);
-		AppleCut[] apples = _spawner.Spawn(gameObject, splitsCount);
+		GameObject[] spawnedObjects = _spawner.Spawn(this.gameObject, splitsCount);
+		AppleCut[] apples = System.Array.ConvertAll(spawnedObjects, obj => obj.GetComponent<AppleCut>());
 
 		for (int i = 0; i < apples.Length; i++)
 		{
