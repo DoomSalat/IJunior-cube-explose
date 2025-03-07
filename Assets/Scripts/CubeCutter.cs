@@ -5,6 +5,7 @@ public class CubeCutter : MonoBehaviour
 {
 	[SerializeField] private Exploser _exploser;
 	[SerializeField] private Spawner _spawner;
+	[SerializeField] private ClickerDetected _clickerDetected;
 
 	[SerializeField] private Vector2 _minMaxSplit = new Vector2(2, 6);
 	[SerializeField][Range(0, 100)] private float _startChance = 100;
@@ -12,41 +13,29 @@ public class CubeCutter : MonoBehaviour
 	private float _reduceScale = 2;
 	private float _reduceChance = 2;
 
-	private List<Cube> _cubes = new List<Cube>();
-
-	private void Start()
+	private void OnEnable()
 	{
-		RefreshCubesList();
+		_clickerDetected.Hitted += ClickedHit;
 	}
 
 	private void OnDisable()
 	{
-		foreach (Cube cube in _cubes)
-		{
-			cube.Clicked -= ClickedSplit;
-		}
+		_clickerDetected.Hitted -= ClickedHit;
 	}
 
-	private void ClickedSplit(Cube cube)
+	private void ClickedHit(GameObject hit)
 	{
+		Cube cube = hit.GetComponent<Cube>();
+
+		if (cube == null)
+			return;
+
 		if (IsSplit(cube))
 		{
 			Split(cube);
 		}
 
 		DestroyCube(cube);
-	}
-
-	private void RefreshCubesList()
-	{
-		_cubes.Clear();
-		_cubes.AddRange(FindObjectsByType<Cube>(FindObjectsSortMode.None));
-
-		foreach (Cube cube in _cubes)
-		{
-			cube.Chance = _startChance;
-			cube.Clicked += ClickedSplit;
-		}
 	}
 
 	private void Split(Cube cube)
@@ -72,9 +61,6 @@ public class CubeCutter : MonoBehaviour
 			{
 				_exploser.Explose(spawnRigidbody, cube.transform.position);
 			}
-
-			_cubes.Add(spawnedCube);
-			spawnedCube.Clicked += ClickedSplit;
 		}
 	}
 
@@ -88,9 +74,6 @@ public class CubeCutter : MonoBehaviour
 	{
 		if (cube == null)
 			return;
-
-		cube.Clicked -= ClickedSplit;
-		_cubes.Remove(cube);
 
 		cube.Destroy();
 	}

@@ -667,6 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _exploser: {fileID: 1474939721}
   _spawner: {fileID: 518190438}
+  _clickerDetected: {fileID: 2083269310}
   _minMaxSplit: {x: 2, y: 6}
   _startChance: 100
 --- !u!1 &832575517
@@ -1158,7 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488fb366a84c92c45963f36787caa60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
+  _layerMask:
     serializedVersion: 2
     m_Bits: 8
 --- !u!1660057539 &9223372036854775807

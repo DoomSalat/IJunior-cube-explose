@@ -19,8 +19,6 @@ public class Cube : MonoBehaviour, IClickable
 		}
 	}
 
-	public System.Action<Cube> Clicked;
-
 	public void Construct(float chance, float scale)
 	{
 		Chance = chance;
@@ -30,10 +28,7 @@ public class Cube : MonoBehaviour, IClickable
 		_selfRenderer.material = _materials[randomMaterial];
 	}
 
-	public void OnClick()
-	{
-		Clicked?.Invoke(this);
-	}
+	public void OnClick() { }
 
 	public void Destroy()
 	{

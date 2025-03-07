@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class ClickerDetected : MonoBehaviour
 {
-	[SerializeField] private LayerMask layerMask;
+	[SerializeField] private LayerMask _layerMask;
+
+	public event System.Action<GameObject> Hitted;
 
 	private void Update()
 	{
@@ -11,7 +13,7 @@ public class ClickerDetected : MonoBehaviour
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
 			{
 				IClickable clickable = hit.collider.GetComponent<IClickable>();
 
@@ -19,6 +21,8 @@ public class ClickerDetected : MonoBehaviour
 				{
 					clickable.OnClick();
 				}
+
+				Hitted?.Invoke(hit.collider.gameObject);
 			}
 		}
 	}
