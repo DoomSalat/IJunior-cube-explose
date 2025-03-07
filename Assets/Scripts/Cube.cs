@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Cube : MonoBehaviour, IClickable
+public class Cube : MonoBehaviour
 {
+	[SerializeField] private Rigidbody _selfRigidbody;
 	[SerializeField] private Renderer _selfRenderer;
-	[SerializeField] private Material[] _materials;
 
 	[SerializeField][Range(0, 100)] private float _chance;
 
@@ -19,16 +19,24 @@ public class Cube : MonoBehaviour, IClickable
 		}
 	}
 
+	public Rigidbody SelfRigidbody
+	{
+		get
+		{
+			return _selfRigidbody;
+		}
+	}
+
 	public void Construct(float chance, float scale)
 	{
 		Chance = chance;
 		transform.localScale = new Vector3(scale, scale, scale);
-
-		int randomMaterial = Random.Range(0, _materials.Length);
-		_selfRenderer.material = _materials[randomMaterial];
 	}
 
-	public void OnClick() { }
+	public void ChangeMaterial(Material material)
+	{
+		_selfRenderer.material = material;
+	}
 
 	public void Destroy()
 	{

@@ -4,7 +4,7 @@ public class ClickerDetected : MonoBehaviour
 {
 	[SerializeField] private LayerMask _layerMask;
 
-	public event System.Action<GameObject> Hitted;
+	public event System.Action<Cube> HittedCube;
 
 	private void Update()
 	{
@@ -15,14 +15,10 @@ public class ClickerDetected : MonoBehaviour
 
 			if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
 			{
-				IClickable clickable = hit.collider.GetComponent<IClickable>();
-
-				if (clickable != null)
+				if (hit.collider.TryGetComponent<Cube>(out Cube cube))
 				{
-					clickable.OnClick();
+					HittedCube?.Invoke(cube);
 				}
-
-				Hitted?.Invoke(hit.collider.gameObject);
 			}
 		}
 	}

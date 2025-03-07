@@ -668,6 +668,7 @@ MonoBehaviour:
   _exploser: {fileID: 1474939721}
   _spawner: {fileID: 518190438}
   _clickerDetected: {fileID: 2083269310}
+  _drawer: {fileID: 1912701836}
   _minMaxSplit: {x: 2, y: 6}
   _startChance: 100
 --- !u!1 &832575517
@@ -1075,11 +1076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa095e04f0353447acac57daccc6014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selfRigidbody: {fileID: 1596705271}
   _selfRenderer: {fileID: 1596705268}
-  _materials:
-  - {fileID: 2100000, guid: de5a23ff028f37746a588c17a83c5715, type: 2}
-  - {fileID: 2100000, guid: 52e495b9104c80b4bada23fe455cd2cc, type: 2}
-  - {fileID: 2100000, guid: 128fe90a9cb2e1c47abc138540ae663d, type: 2}
   _chance: 100
 --- !u!1 &1894575146
 GameObject:
@@ -1110,11 +1108,60 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 637130719}
   - {fileID: 518190439}
   - {fileID: 1474939720}
-  - {fileID: 637130719}
+  - {fileID: 1912701835}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1912701834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1912701835}
+  - component: {fileID: 1912701836}
+  m_Layer: 0
+  m_Name: Drawer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1912701835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912701834}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1894575147}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1912701836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912701834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e1a3289439d014da9c60e49553327e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _materials:
+  - {fileID: 2100000, guid: de5a23ff028f37746a588c17a83c5715, type: 2}
+  - {fileID: 2100000, guid: 52e495b9104c80b4bada23fe455cd2cc, type: 2}
+  - {fileID: 2100000, guid: 128fe90a9cb2e1c47abc138540ae663d, type: 2}
 --- !u!1 &2083269308
 GameObject:
   m_ObjectHideFlags: 0

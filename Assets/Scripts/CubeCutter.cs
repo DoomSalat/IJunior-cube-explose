@@ -1,11 +1,11 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeCutter : MonoBehaviour
 {
 	[SerializeField] private Exploser _exploser;
-	[SerializeField] private Spawner _spawner;
+	[SerializeField] private CubeSpawner _spawner;
 	[SerializeField] private ClickerDetected _clickerDetected;
+	[SerializeField] private DrawCubeMaterial _drawer;
 
 	[SerializeField] private Vector2 _minMaxSplit = new Vector2(2, 6);
 	[SerializeField][Range(0, 100)] private float _startChance = 100;
@@ -15,27 +15,22 @@ public class CubeCutter : MonoBehaviour
 
 	private void OnEnable()
 	{
-		_clickerDetected.Hitted += ClickedHit;
+		_clickerDetected.HittedCube += ClickedHit;
 	}
 
 	private void OnDisable()
 	{
-		_clickerDetected.Hitted -= ClickedHit;
+		_clickerDetected.HittedCube -= ClickedHit;
 	}
 
-	private void ClickedHit(GameObject hit)
+	private void ClickedHit(Cube hitCube)
 	{
-		Cube cube = hit.GetComponent<Cube>();
-
-		if (cube == null)
-			return;
-
-		if (IsSplit(cube))
+		if (IsSplit(hitCube))
 		{
-			Split(cube);
+			Split(hitCube);
 		}
 
-		DestroyCube(cube);
+		DestroyCube(hitCube);
 	}
 
 	private void Split(Cube cube)
@@ -44,23 +39,16 @@ public class CubeCutter : MonoBehaviour
 			return;
 
 		int splitsCount = (int)Random.Range(_minMaxSplit.x, _minMaxSplit.y);
-		GameObject[] spawnedObjects = _spawner.Spawn(cube.gameObject, splitsCount);
+		Cube[] spawnedCubes = _spawner.Spawn(cube, splitsCount);
 
-		foreach (GameObject spawnedObject in spawnedObjects)
+		foreach (Cube spawnCube in spawnedCubes)
 		{
-			Cube spawnedCube = spawnedObject.GetComponent<Cube>();
-			if (spawnedCube == null) continue;
+			float nextChance = spawnCube.Chance / _reduceChance;
+			float nextScale = spawnCube.transform.localScale.x / _reduceScale;
+			spawnCube.Construct(nextChance, nextScale);
+			_drawer.RandomMaterial(spawnCube);
 
-			float nextChance = cube.Chance / _reduceChance;
-			float nextScale = cube.transform.localScale.x / _reduceScale;
-			spawnedCube.Construct(nextChance, nextScale);
-
-			Rigidbody spawnRigidbody = spawnedCube.GetComponent<Rigidbody>();
-
-			if (spawnRigidbody != null)
-			{
-				_exploser.Explose(spawnRigidbody, cube.transform.position);
-			}
+			_exploser.Explose(spawnCube.SelfRigidbody, cube.transform.position);
 		}
 	}
 
