@@ -1080,7 +1080,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: de5a23ff028f37746a588c17a83c5715, type: 2}
   - {fileID: 2100000, guid: 52e495b9104c80b4bada23fe455cd2cc, type: 2}
   - {fileID: 2100000, guid: 128fe90a9cb2e1c47abc138540ae663d, type: 2}
-  _chance: 0
+  _chance: 100
 --- !u!1 &1894575146
 GameObject:
   m_ObjectHideFlags: 0
