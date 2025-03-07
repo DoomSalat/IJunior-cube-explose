@@ -7,7 +7,7 @@ public class CubeCutter : MonoBehaviour
 	[SerializeField] private ClickerDetected _clickerDetected;
 	[SerializeField] private DrawCubeMaterial _drawer;
 
-	[SerializeField] private Vector2 _minMaxSplit = new Vector2(2, 6);
+	[SerializeField] private Vector2Int _minMaxSplit = new Vector2Int(2, 6);
 	[SerializeField][Range(0, 100)] private float _startChance = 100;
 
 	private float _reduceScale = 2;
@@ -15,15 +15,15 @@ public class CubeCutter : MonoBehaviour
 
 	private void OnEnable()
 	{
-		_clickerDetected.HittedCube += ClickedHit;
+		_clickerDetected.HittedCube += OnClick;
 	}
 
 	private void OnDisable()
 	{
-		_clickerDetected.HittedCube -= ClickedHit;
+		_clickerDetected.HittedCube -= OnClick;
 	}
 
-	private void ClickedHit(Cube hitCube)
+	private void OnClick(Cube hitCube)
 	{
 		if (IsSplit(hitCube))
 		{
@@ -38,7 +38,7 @@ public class CubeCutter : MonoBehaviour
 		if (cube == null)
 			return;
 
-		int splitsCount = (int)Random.Range(_minMaxSplit.x, _minMaxSplit.y);
+		int splitsCount = Random.Range(_minMaxSplit.x, _minMaxSplit.y);
 		Cube[] spawnedCubes = _spawner.Spawn(cube, splitsCount);
 
 		foreach (Cube spawnCube in spawnedCubes)
