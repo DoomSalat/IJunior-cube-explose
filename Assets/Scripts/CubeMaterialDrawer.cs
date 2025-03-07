@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DrawCubeMaterial : MonoBehaviour
+public class CubeMaterialDrawer : MonoBehaviour
 {
 	[SerializeField] private Material[] _materials;
 

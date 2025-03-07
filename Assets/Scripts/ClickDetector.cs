@@ -21,7 +21,7 @@ public class ClickerDetected : MonoBehaviour
 
 			if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
 			{
-				if (hit.collider.TryGetComponent<Cube>(out Cube cube))
+				if (hit.collider.TryGetComponent(out Cube cube))
 				{
 					HittedCube?.Invoke(cube);
 				}

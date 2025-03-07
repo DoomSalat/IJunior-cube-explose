@@ -4,6 +4,9 @@ public class CubeSpawner : MonoBehaviour
 {
 	[SerializeField][Min(0)] private float _spawnRange = 2f;
 
+	private float _reduceScale = 2;
+	private float _reduceChance = 2;
+
 	public Cube[] Spawn(Cube spawnCube, int count)
 	{
 		Cube[] cubes = new Cube[count];
@@ -18,7 +21,13 @@ public class CubeSpawner : MonoBehaviour
 
 			Cube cube = Instantiate(spawnCube, randomPosition, Quaternion.identity);
 			cubes[i] = cube;
+
+			float nextChance = spawnCube.Chance / _reduceChance;
+			float nextScale = spawnCube.transform.localScale.x / _reduceScale;
+			cube.Construct(nextChance, nextScale);
 		}
+
+		spawnCube.Destroy();
 
 		return cubes;
 	}

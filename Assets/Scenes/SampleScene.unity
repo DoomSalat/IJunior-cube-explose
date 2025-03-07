@@ -668,7 +668,6 @@ MonoBehaviour:
   _exploser: {fileID: 1474939721}
   _spawner: {fileID: 518190438}
   _clickerDetected: {fileID: 2083269310}
-  _drawer: {fileID: 1912701836}
   _minMaxSplit: {x: 2, y: 6}
   _startChance: 100
 --- !u!1 &832575517
@@ -1031,7 +1030,7 @@ Transform:
   m_GameObject: {fileID: 1596705266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.2, z: 0}
+  m_LocalPosition: {x: 0, y: 10.5, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1078,6 +1077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selfRigidbody: {fileID: 1596705271}
   _selfRenderer: {fileID: 1596705268}
+  _drawer: {fileID: 1912701836}
   _chance: 100
 --- !u!1 &1894575146
 GameObject:
