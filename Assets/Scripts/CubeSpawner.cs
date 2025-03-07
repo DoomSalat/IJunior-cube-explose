@@ -27,8 +27,6 @@ public class CubeSpawner : MonoBehaviour
 			cube.Construct(nextChance, nextScale);
 		}
 
-		spawnCube.Destroy();
-
 		return cubes;
 	}
 }

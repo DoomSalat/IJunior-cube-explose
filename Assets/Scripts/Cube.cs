@@ -30,11 +30,6 @@ public class Cube : MonoBehaviour
 		_drawer.RandomMaterial(_selfRenderer);
 	}
 
-	public void ChangeMaterial(Material material)
-	{
-		_selfRenderer.material = material;
-	}
-
 	public void Destroy()
 	{
 		Destroy(gameObject);

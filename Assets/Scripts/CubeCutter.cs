@@ -41,6 +41,8 @@ public class CubeCutter : MonoBehaviour
 		{
 			_exploser.Explose(spawnCube.SelfRigidbody, cube.transform.position);
 		}
+
+		cube.Destroy();
 	}
 
 	private bool CanSplit(Cube cube)
